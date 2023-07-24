@@ -11,6 +11,6 @@ export const url = {
   checkTestName: "/test/check/", // GET
   amountTest: "/test/amount", // GET
   getTests: "/test/get", // GET
-  getTestById: "/test/name", // GET
+  getTestByName: "/test/name", // GET
   createTest: "/test/create", // POST
 }

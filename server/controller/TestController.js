@@ -162,13 +162,22 @@ const getTests = async (req, res) => {
     const testLength = test.length;
     Test.find({name: {$regex: decodedName, $options: "i"}})
       .populate("createdBy", "name")
-      .select("-password")
+      .select("-password -test")
       .limit(limit || 20)
       .then((result) => {
-        const myTests = result.filter((item) => (
+        const newResult = result.map((item) => ({
+          createdBy: item.createdBy,
+          image: item.image,
+          isPrivate: item.isPrivate,
+          name: item.name,
+          users: item.users ? item.users.length : 0,
+          _id: item._id,
+        }))
+
+        const myTests = newResult.filter((item) => (
           item.createdBy.equals(req.user._id)
         ));
-        const otherTests = result.filter((item) => (
+        const otherTests = newResult.filter((item) => (
           !item.createdBy.equals(req.user._id)
         ));
 
@@ -182,18 +191,24 @@ const getTests = async (req, res) => {
 // * Get test by id
 // * GET /test/name
 const getTestByName = async (req, res) => {
-  const {name, password} = req.query;
-  const decoded = decodeURIComponent(name);
+  try {
+    const {name, password} = req.query;
+    const decoded = decodeURIComponent(name);
 
-  const test = await Test.findOne({name: {$regex: new RegExp(`^${decoded}$`), $options: "i"}})
-  if (!test) return res.status(400).json({error: `${decoded} nomli test topilmadi`});
+    const test = await Test.findOne({name: {$regex: new RegExp(`^${decoded}$`), $options: "i"}})
+    if (!test) return res.status(400).json({error: `${decoded} nomli test topilmadi`});
 
-  if (test.isPrivate) {
-    const compared = await bcrypt.compare(password, test.password);
-    if (!compared) return res.status(400).json({error: "Parol xato"});
+    if (test.isPrivate) {
+      const decodedPassword = decodeURIComponent(password)
+      if (!password) return res.status(400).json({error: "Parol kiritilmagan"});
+      const compared = await bcrypt.compare(decodedPassword, test.password);
+      if (!compared) return res.status(400).json({error: "Parol xato"});
+    }
+
+    res.json({_id: test._id, name: test.name, test: test.test});
+  } catch(err){
+    ErrorDB(err, "GET /test/name", res)
   }
-
-  res.json({_id: test._id, name: test.name, test: test.test});
 }
 
 export {createTest, deleteTest, edit, checkName, getAllTest, getTests, getTestByName};

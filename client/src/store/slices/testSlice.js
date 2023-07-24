@@ -3,14 +3,16 @@ import {createSlice} from "@reduxjs/toolkit";
 const testSlice = createSlice({
   name: "test",
   initialState: {
-    password: ""
+    url: "",
   },
   reducers: {
-    changePassword(state, {payload}) {
-      state.password = payload;
+    changeUrl(state, {payload}) {
+      state.url = payload;
     }
   }
 })
 
-export const {changePassword} = testSlice.actions;
+export const {
+  changeUrl,
+} = testSlice.actions;
 export default testSlice.reducer;

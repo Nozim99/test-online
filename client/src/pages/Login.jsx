@@ -1,54 +1,11 @@
-import {
-  FacebookLoginButton,
-  GoogleLoginButton,
-  InstagramLoginButton,
-} from "react-social-login-buttons";
 import { useState } from "react";
-import axios from "axios";
 import Layout from "../Layout/Layout.jsx";
 import SignIn from "../components/extra/SignIn.jsx";
 import SignUp from "../components/extra/SignUp.jsx";
-import { url } from "../Data/url.js";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
-  const [login, setLogin] = useState({ name: "", password: "" });
-  const [register, setRegister] = useState({
-    name: "",
-    image: null,
-    password: "",
-    confirm: "",
-  });
-
-  const changeLogin = (key, value) => {
-    setLogin({ ...login, [key]: value });
-  };
-
-  const changeRegister = (key, value) => {
-    setRegister({ ...register, [key]: value });
-  };
-
-  // const sendRegister = () => {
-  //   const formData = new FormData();
-  //   formData.append("image", register.image);
-  //   formData.append("name", register.name);
-  //   formData.append("password", register.password);
-
-  //   axios.post(url.basic + url.userCreate, formData)
-  //     .then((response) => {
-  //       console.log(response)
-  //     })
-  //     .catch((err) => {
-  //       if (err.response && err.response.data && err.response.data.error) {
-  //         console.log(err.response.data.error)
-  //       } else {
-  //         console.log(err)
-  //       }
-  //     })
-  // }
-  // sendRegister={sendRegister} register={register} changeRegister={changeRegister}
-  // setIsSignIn={setIsSignIn}
   return (
     <Layout>
       <section className="min-h-screen">
@@ -83,12 +40,6 @@ const Login = () => {
             <SignUp setIsSignIn={setIsSignIn} />
           )}
           <hr className="w-2/3 border-neutral-400 mx-auto mb-4" />
-          {/*<p className="text-center tracking-wide font-medium text-lg mb-2">Ijtimoiy tarmoq orqali kirish</p>*/}
-          {/*<div className="flex flex-col gap-2">*/}
-          {/*  <GoogleLoginButton/>*/}
-          {/*  <FacebookLoginButton/>*/}
-          {/*  <InstagramLoginButton/>*/}
-          {/*</div>*/}
         </div>
       </section>
     </Layout>

@@ -5,9 +5,6 @@ import {useState} from "react";
 const SearchInput = ({testByName}) => {
   const [name, setName] = useState("");
 
-  // encodeURIComponent() - shifrlash
-  // decodeURIComponent() - shifrdan chiqarish
-
   const searchHandler = (e) => {
     testByName(name)
   }

@@ -1,6 +1,5 @@
-import PropTypes from "prop-types";
 
-const OrderNumbers = ({userAnswers, order, correctAnswers, answersHandle}) => {
+const OrderNumbers = ({userAnswers, answersHandle, order, correctAnswers}) => {
   return (
     <ul className="xs:w-96 w-5/6 mx-auto grid grid-cols-5 2xs:grid-cols-6 gap-3 mt-8 pb-10">
       {
@@ -20,11 +19,5 @@ const OrderNumbers = ({userAnswers, order, correctAnswers, answersHandle}) => {
   );
 };
 
-OrderNumbers.propTypes = {
-  userAnswers: PropTypes.array.isRequired,
-  order: PropTypes.number.isRequired,
-  correctAnswers: PropTypes.array.isRequired,
-  answersHandle: PropTypes.func.isRequired
-};
 
 export default OrderNumbers;

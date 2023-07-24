@@ -11,7 +11,7 @@ router.get("/amount", testController.getAllTest);
 
 router.use(protect);
 router.get("/get", testController.getTests);
-router.get("/name", upload.single("image"), testController.getTestByName);
+router.get("/name", testController.getTestByName);
 router.post("/create", upload.single("image"), testController.createTest);
 
 export default router;

@@ -1,4 +1,3 @@
-import {useRef} from "react";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeName, changePassword, toggleIsPrivate} from "../../store/slices/createTest.js";
@@ -7,7 +6,6 @@ import {BsFillCheckCircleFill} from "react-icons/bs";
 import axios from "axios";
 import {url} from "../../Data/url.js";
 import {toastError} from "../../utils/toastifyMoadl.js";
-import PasswordInput from "../extra/PasswordInput.jsx";
 import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 
 function NameInput() {
@@ -17,8 +15,6 @@ function NameInput() {
   const [name, setName] = useState("");
   const [inputError, setInputError] = useState("");
   const [load, setLoad] = useState(false);
-  const [password, setPassword] = useState("");
-  const [passwordInputError, setPasswordInputError] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [show, setShow] = useState(false);
 

@@ -4,9 +4,10 @@ import "react-awesome-button/dist/styles.css";
 import {BiImageAdd, BiLoaderAlt} from "react-icons/bi";
 import axios from "axios";
 import {url} from "../../Data/url.js";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setUserData} from "../../store/slices/authSlice.js";
 import {useNavigate} from "react-router-dom";
+import {changeUrl} from "../../store/slices/testSlice.js";
 
 const SignUp = ({setIsSignIn}) => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const SignUp = ({setIsSignIn}) => {
     password: "",
     confirm: "",
   });
+  const testUrl = useSelector((store) => store.test);
 
   const changeImage = (value) => {
     setRegister({...register, image: value});
@@ -110,17 +112,23 @@ const SignUp = ({setIsSignIn}) => {
 
     axios.post(url.basic + url.userCreate, formData)
       .then((response) => {
-        setLoad(false)
-        console.log(response.data)
         dispatch(setUserData(response.data));
-        navigate("/")
+        if (testUrl.url) {
+          navigate(testUrl.url)
+          dispatch(changeUrl(""))
+        } else {
+          navigate("/");
+        }
       })
       .catch((err) => {
-        setLoad(false)
         if (err.response && err.response.data && err.response.data.error) {
+          console.error(err.response.data.error);
         } else {
-          console.log(err)
+          console.error(err)
         }
+      })
+      .finally(() => {
+        setLoad(false);
       })
   }
 

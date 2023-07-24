@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import {MdNavigateBefore, MdNavigateNext} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 
-const ChooseVariantBtn = ({orderDecrement, chooseAnswer, orderIncrement, userAnswerCount, allAnswerCount}) => {
+const ChooseVariantBtn = ({orderDecrement, orderIncrement, chooseAnswer, userAnswerCount, allAnswerCount}) => {
   const navigate = useNavigate();
 
   return (
@@ -18,13 +17,5 @@ const ChooseVariantBtn = ({orderDecrement, chooseAnswer, orderIncrement, userAns
     </div>
   );
 };
-
-ChooseVariantBtn.propTypes = {
-  orderDecrement: PropTypes.func.isRequired,
-  chooseAnswer: PropTypes.func.isRequired,
-  orderIncrement: PropTypes.func.isRequired,
-  userAnswerCount: PropTypes.number.isRequired,
-  allAnswerCount: PropTypes.number.isRequired,
-}
 
 export default ChooseVariantBtn;

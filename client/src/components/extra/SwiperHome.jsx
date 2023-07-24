@@ -4,17 +4,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {Autoplay, Pagination, Navigation} from "swiper/modules";
 import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
 
 const SwiperHome = () => {
   const navigate = useNavigate();
-  const auth = useSelector((store) => store.auth);
 
   const telegramGroup = () => {
-    // https://t.me/mezesTest
-    // window.location.href = "https://www.google.com/"
     window.open("https://t.me/mezesTest", "_blank");
-    // navigate("https://www.google.com/")
   }
 
   return (

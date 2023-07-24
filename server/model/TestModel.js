@@ -45,7 +45,10 @@ const TestSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  password: String,
+  password: {
+    type: String,
+    min: 3,
+  },
   users: [{
     userId: {
       type: ObjectId,

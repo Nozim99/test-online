@@ -1,8 +1,7 @@
 import {CiMenuKebab} from "react-icons/ci";
 import {useState} from "react";
 import MenuModal from "../extra/MenuModal.jsx";
-import {FaUserGroup} from "react-icons/fa6";
-import {HiClipboardDocumentList, HiDocumentPlus} from "react-icons/hi2";
+import {HiDocumentPlus} from "react-icons/hi2";
 import {BiSolidEditAlt} from "react-icons/bi";
 import {MdDelete} from "react-icons/md";
 

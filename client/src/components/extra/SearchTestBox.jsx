@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useSelector} from "react-redux";
 import {BiSolidLock, BiSolidLockOpen} from "react-icons/bi";
 import TestPasswordModal from "../Test/TestPasswordModal.jsx";
@@ -7,21 +7,10 @@ import TestPasswordModal from "../Test/TestPasswordModal.jsx";
 const SearchTestBox = ({data}) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState("");
-  const test = useSelector((store) => store.test)
-
 
   const testHandler = () => {
     const encoded = encodeURIComponent(data.name);
-
-    if (data.isPrivate) {
-      if (test.password) {
-        navigate(`/test/${encoded}`)
-      } else {
-        setModal(data._id)
-      }
-    } else {
-      navigate(`/test/${encoded}`);
-    }
+    navigate(`/test?name=${encoded}&isPrivate=${data.isPrivate}`);
   }
 
   return (
@@ -37,7 +26,7 @@ const SearchTestBox = ({data}) => {
           <h2 className="font-medium tracking-wider whitespace-nowrap sm:text-lg">{data.name}</h2>
           <div
             className="text-sm xs:text-base text-neutral-600 whitespace-nowrap dark:text-white/70">yaratuvchisi: {data.createdBy.name}</div>
-          <div className="text-sm xs:text-base text-neutral-600 dark:text-white/70">ishtirokchilar: 10</div>
+          <div className="text-sm xs:text-base text-neutral-600 dark:text-white/70">ishtirokchilar: {data.users}</div>
         </div>
         <div
           className="absolute w-10 h-10 rounded-full dark:bg-slate-300/20 bg-neutral-600/30 flex justify-center items-center right-6 text-2xl">

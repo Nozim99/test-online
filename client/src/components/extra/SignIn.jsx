@@ -3,10 +3,11 @@ import {useState} from "react";
 import axios from "axios";
 import {url} from "../../Data/url.js";
 import {toastError} from "../../utils/toastifyMoadl.js";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setUserData} from "../../store/slices/authSlice.js";
 import {useNavigate} from "react-router-dom";
 import {BiLoaderAlt} from "react-icons/bi";
+import {changeUrl} from "../../store/slices/testSlice.js";
 
 const SignIn = ({setIsSignIn}) => {
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ const SignIn = ({setIsSignIn}) => {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
   const [inputError, setInputError] = useState({name: false, password: false});
   const [load, setLoad] = useState(false);
+  const testUrl = useSelector((store) => store.test)
   // const [fetchError, setFechError] = useState("");
-
   const loginHandler = () => {
     setLoad(true);
     axios.post(url.basic + url.login, {
@@ -29,8 +30,13 @@ const SignIn = ({setIsSignIn}) => {
       }
     })
       .then((result) => {
-        navigate("/");
         dispatch(setUserData(result.data))
+        if (testUrl.url) {
+          navigate(testUrl.url)
+          dispatch(changeUrl(""))
+        } else {
+          navigate("/");
+        }
       })
       .catch((err) => {
         if (err.response && err.response.data) {
@@ -70,7 +76,7 @@ const SignIn = ({setIsSignIn}) => {
         value={name}
         type="text"
         id="name"
-        placeholder="Avloniy"
+        placeholder="name"
         className={`loginInput mb-5 px-3 ${inputError.name ? "border-red-500" : "border-neutral-300 dark:border-blue-400 dark:shadow-blue-400/50 dark:focus:border-blue-500 dark:focus:shadow-blue-500/50"}`}
       />
       <label className="loginLabel" htmlFor="password">Parol</label>
@@ -86,6 +92,7 @@ const SignIn = ({setIsSignIn}) => {
           onChange={changePassword}
           value={password}
           type={isPasswordHidden ? "password" : "text"}
+          placeholder="password"
           id="password"
           className={`loginInput w-full pl-3 pr-8 ${inputError.password ? "border-red-500" : "border-neutral-300 dark:border-blue-400 dark:shadow-blue-400/50 dark:focus:border-blue-500 dark:focus:shadow-blue-500/50"}`}/>
       </div>

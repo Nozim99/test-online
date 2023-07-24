@@ -4,12 +4,6 @@ import GroupRBox from "../components/Group/GroupRBox.jsx";
 import UserInfo from "../components/Group/UserInfo.jsx";
 import Date from "../components/Group/Date.jsx";
 
-const group = {
-  image: "",
-  name: "",
-  createdBy: "",
-  member: 10,
-}
 const test = [{
   image: "",
   name: "",
