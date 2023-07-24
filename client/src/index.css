@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.SwiperSlideTitle {
+    @apply absolute xs:bottom-6 bottom-7 left-1/2 -translate-x-1/2 xs:translate-x-0 whitespace-nowrap xs:left-1 bg-white/70 backdrop-blur px-3 xs:text-xl text-base underline font-medium tracking-wider rounded dark:text-white dark:bg-[#0F172A]/50 dark:px-6 dark:py-1 dark:backdrop-blur;
+}
+
+.homeBtn {
+    @apply mx-auto w-60 border border-blue-600 rounded-md 2xs:w-80 py-1.5 bg-blue-100 font-medium tracking-wide hover:bg-blue-500 hover:text-white transition duration-200 md:w-96 dark:bg-blue-500 dark:shadow-lg dark:shadow-blue-500/50 dark:hover:bg-blue-600 dark:hover:shadow-blue-600/50 flex justify-center items-center gap-1;
+}
+
+.homeStatistics {
+    @apply border border-neutral-300 rounded-md px-12 py-1 text-lg font-bold tracking-wider shadow-md dark:text-white dark:border-blue-400 dark:border-2 dark:shadow-blue-400/50 dark:shadow-lg;
+}
+
+.loginBtn {
+    @apply w-1/2 text-center rounded-lg h-full text-lg font-medium tracking-wide relative z-10 transform duration-300 outline-0;
+}
+
+.loginInput {
+    @apply outline-0 border rounded-md py-1 xs:py-1.5 bg-cyan-100/10 dark:shadow-lg
+}
+
+.passwordViewBtn {
+    @apply absolute text-lg right-2 top-1/2 -translate-y-1/2 text-neutral-500 cursor-pointer dark:text-blue-300;
+}
+
+.loginLabel {
+    @apply text-neutral-700 tracking-wide dark:text-white;
+}
+
+.loginKirishBtn {
+    @apply bg-blue-600 rounded-lg py-1 text-white font-medium tracking-wider mt-6 mb-4 hover:bg-blue-700 xs:py-1.5 dark:shadow-lg dark:shadow-blue-600/50 dark:hover:shadow-blue-700/50 transition;
+}
+
+.searchCheckbox {
+    @apply border px-4 rounded-full text-sm tracking-wider flex gap-1 items-center transition;
+}
+
+.searchCheckboxInactive {
+    @apply border-neutral-400 bg-neutral-200/50 dark:bg-slate-100 dark:shadow-lg dark:shadow-slate-100/50;
+}
+
+.searchItemsBox {
+    @apply flex gap-2 2xs:gap-4 xs:w-96 sm:w-100 2xs:w-80 w-60 mx-auto items-center rounded-lg px-1 py-1 xs:py-2 border-2 cursor-pointer dark:shadow-lg dark:transition;
+
+}
+
+.searchItemsBoxImg {
+    @apply w-12 h-12 2xs:w-14 2xs:h-14 xs:w-16 xs:h-16 rounded-full bg-center bg-no-repeat bg-cover flex justify-center items-center text-3xl font-bold border border-neutral-900 dark:border-neutral-400;
+}
+
+.searchItemsBoxContent {
+    @apply flex flex-col overflow-hidden w-44 2xs:w-60 xs:w-72 sm:w-99 text-sm xs:text-base;
+}
+
+.createTestBtn {
+    @apply transition border xs:border-2 text-sm xs:text-base border-green-500 bg-green-100 px-4 xs:px-5 py-1 rounded-lg flex hover:bg-green-50 gap-1 items-center text-green-600 tracking-wide justify-center xs:justify-start dark:border-0 dark:shadow-lg dark:shadow-green-500/50 dark:bg-green-600 dark:text-white dark:font-medium dark:hover:bg-green-600 dark:hover:shadow-green-600/50;
+}
+
+.testAnswers {
+    @apply relative border-2 rounded-md py-1 pl-6 pr-2 cursor-pointer dark:shadow-md;
+}
+
+.testVariant {
+    @apply absolute w-9 h-9 rounded-full border-2 top-1/2 -translate-y-1/2 -left-4 flex justify-center items-center font-medium text-lg;
+}
+
+.testAnswerStatistics {
+    @apply w-8 h-8 flex justify-center items-center rounded-full cursor-pointer hover:bg-blue-100 dark:hover:bg-neutral-800;
+}
+
+.testConfirmBtns {
+    @apply border border-blue-400 rounded py-0.5 bg-blue-500 text-white tracking-wider hover:bg-blue-600 transition dark:bg-blue-600 dark:border-blue-700 dark:shadow-lg dark:shadow-blue-600/50;
+}
+
+.testConfirmRedBtn {
+    @apply border border-red-400 rounded py-0.5 bg-red-600 text-white tracking-wider hover:bg-red-500 transition dark:bg-red-700 dark:border-red-800 dark:shadow-lg dark:shadow-red-600/50 dark:hover:bg-red-800;
+}
+
+.createTestTitle {
+    @apply text-center block font-medium tracking-wide text-lg dark:mb-2 mt-4;
+}
+
+.createTestVariantLabel {
+    @apply border border-neutral-300 rounded-l-md px-2 font-medium bg-white flex justify-center cursor-pointer pt-0.5 dark:bg-blue-900/20 dark:border-blue-400;
+}
+
+.createTestVariantTextarea {
+    @apply w-full border border-neutral-300 rounded-r-md py-1 outline-0 px-2 border-l-0 resize-none overflow-hidden dark:bg-blue-900/20 dark:border-blue-400;
+}
+
+.createTestVariantBox {
+    @apply flex dark:shadow-md dark:shadow-blue-600/50;
+}
+
+.createTestBtns {
+    @apply flex items-center justify-center gap-2 border-2 rounded-md py-0.5 2xs:py-1 sm:py-2 tracking-wide font-medium text-lg
+}
+
+.paginationBtn {
+    @apply border border-neutral-400 dark:border-blue-400 px-3 py-0.5 text-3xl rounded-lg dark:shadow-lg dark:shadow-blue-800/50 dark:hover:bg-blue-600/20 hover:bg-white
+}
+
+.testStatistic {
+    @apply border-2 w-20 text-center py-0.5 rounded-md tracking-wide font-medium dark:shadow-lg
+}
+
+/*  Animation   */
+
+.showItemBox {
+    animation: showItem 600ms linear forwards;
+}
+
+@keyframes showItem {
+    0% {
+        position: relative;
+        left: 0;
+    }
+
+    50% {
+        left: -100vw;
+        /*opacity: 1;*/
+        scale: 0.7;
+    }
+
+    51% {
+        opacity: 0;
+        scale: 0;
+        left: 0;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.createItem {
+    animation: createItem 300ms ease-out forwards;
+}
+
+@keyframes createItem {
+    0% {
+        opacity: 0;
+        scale: 0.3;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.deleteItemBox {
+    animation: deleteItem 300ms ease-in forwards;
+}
+
+@keyframes deleteItem {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    100% {
+        opacity: 0.5;
+        scale: 0;
+    }
+}
+
+.deleteItemBoxLeft {
+    animation: deleteItemLeft 600ms linear forwards;
+}
+
+@keyframes deleteItemLeft {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    50% {
+        opacity: 0.7;
+        scale: 0;
+        position: relative;
+        left: 0;
+    }
+    51% {
+        position: relative;
+        left: -100vw;
+    }
+    100% {
+        position: relative;
+        opacity: 1;
+        scale: 1;
+        left: 0;
+    }
+}
+
+.deleteItemBoxRight {
+    animation: deleteItemRight 600ms linear forwards;
+}
+
+@keyframes deleteItemRight {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+    50% {
+        opacity: 0.7;
+        scale: 0;
+        position: relative;
+        left: 0;
+    }
+    51% {
+        position: relative;
+        left: 100vw;
+    }
+    100% {
+        position: relative;
+        opacity: 1;
+        scale: 1;
+        left: 0;
+    }
+}
+
+.nextBtn {
+    animation: nextBtn 600ms forwards;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes nextBtn {
+    0% {
+        scale: 1;
+        position: relative;
+        left: 0;
+    }
+    50% {
+        scale: 0.5;
+        position: relative;
+        left: -100vw;
+    }
+    51% {
+        scale: 0.5;
+        position: relative;
+        left: 100vw;
+    }
+    100% {
+        scale: 1;
+        position: relative;
+        left: 0;
+    }
+}
+
+.prevBtn {
+    animation: prevBtn 600ms forwards;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes prevBtn {
+    0% {
+        scale: 1;
+        position: relative;
+        left: 0;
+    }
+    50% {
+        scale: 0.5;
+        position: relative;
+        left: 100vw;
+    }
+    51% {
+        scale: 0.5;
+        position: relative;
+        left: -100vw;
+    }
+    100% {
+        scale: 1;
+        position: relative;
+        left: 0;
+    }
+}
+
+.menuModal {
+    animation: modal 200ms;
+}
+
+@keyframes modal {
+    from {
+        bottom: -2rem;
+        right: -3rem;
+        scale: 0.3;
+    }
+    to {
+        bottom: 0;
+        right: 0;
+        scale: 1;
+    }
+}
+
+.showText {
+    animation: showText 500ms ease-out;
+}
+
+@keyframes showText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
